@@ -91,7 +91,7 @@ export default function Footer() {
       
       {/* Copyright area */}
       <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/10 text-center text-xs text-gray-500">
-        <p>© Xton. All Rights Reserved by EnvyTheme</p>
+        <p>©SheziTech  All Rights Reserved by EnvyTheme</p>
       </div>
     </footer>
   );

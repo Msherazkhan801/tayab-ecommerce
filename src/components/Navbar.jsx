@@ -35,7 +35,7 @@ const Navbar = () => {
                     <path d="M6 8V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8H20C21.1046 8 22 8.89543 22 10V20C22 21.1046 21.1046 22 20 22H4C2.89543 22 2 21.1046 2 20V10C2 8.89543 2.89543 8 4 8H6ZM8 8H16V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8ZM12 15C13.6569 15 15 13.6569 15 12H13C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12H9C9 13.6569 10.3431 15 12 15Z" fill="white"/>
                 </svg>
             </div>
-            <span className="text-3xl font-bold tracking-tight text-gray-900">Xton</span>
+            {/* <span className="text-3xl font-bold tracking-tight text-gray-900">Xton</span> */}
           </div>
 
           {/* Desktop Navigation */}
