@@ -11,7 +11,6 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
 
       {/* Hero section stays outside the container for full-width */}
       <section id="home">
@@ -40,7 +39,7 @@ export default function Home() {
         </section>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }
