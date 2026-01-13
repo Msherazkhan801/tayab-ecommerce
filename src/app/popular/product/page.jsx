@@ -1,12 +1,119 @@
-import PopularProducts from "@/components/PopularProducts";
-import React from "react";
+"use client"
+import Contact from "@/app/contact/page";
+import { popularProducts } from "@/utils/data";
+import { Star, Heart,  ShoppingBag } from "lucide-react";
+import { useState } from "react";
 
-const page = () => {
+export default function PopularProductsPage() {
+    const [selectedProducts, setSelectedProducts] = useState([]);
+  
+    // Logic to add a product to the list
+    const handleProductClick = (product) => {
+      const exists = selectedProducts.find((p) => p.id === product.id);
+      if (!exists) {
+        setSelectedProducts([...selectedProducts, { ...product, quantity: 1 }]);
+      }
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  
+    };
+  
+    // Logic to remove a product
+    const handleRemove = (id) => {
+      setSelectedProducts(selectedProducts.filter((p) => p.id !== id));
+    };
+  
+    // Logic to update quantity
+    const handleUpdateQty = (id, newQty) => {
+      setSelectedProducts(selectedProducts.map(p => 
+        p.id === id ? { ...p, quantity: Math.max(1, newQty) } : p
+      ));
+    };
   return (
-    <>
-      <PopularProducts />
-    </>
-  );
-};
+    <section className="py-8 px-4 max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <span className="text-pink-500 font-medium text-sm mb-2 block">
+          See Our Collection
+        </span>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          Popular Products
+        </h2>
+      </div>
 
-export default page;
+      {/* Product Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {popularProducts.map((product) => (
+          <div key={product.id} className="group"
+          
+       onClick={() => handleProductClick(product)}
+          >
+            {/* Image Container */}
+            <div className="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              
+              {/* Sale Badge */}
+              {product.onSale && (
+                <div className="absolute top-4 left-4 bg-red-600 text-white text-[11px] font-bold w-12 h-12 flex items-center justify-center rounded-full uppercase">
+                  Sale!
+                </div>
+              )}
+
+              {/* Hover Icons (Right Side) */}
+              <div className="absolute top-4 right-4 flex flex-col gap-2 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+                <button className="bg-white p-2.5 rounded-full shadow-md hover:bg-pink-500 hover:text-white transition-colors">
+                  <Heart size={18} />
+                </button>
+                <button className="bg-white p-2.5 rounded-full shadow-md hover:bg-pink-500 hover:text-white transition-colors">
+                  <ShoppingBag size={18} />
+                </button>
+              
+              </div>
+            </div>
+
+            {/* Product Details */}
+            <div className="space-y-1">
+              <h3 className="font-bold text-gray-900 text-lg group-hover:text-pink-500 transition-colors">
+                {product.name}
+              </h3>
+              
+              {/* Price and Stars Row */}
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-400 line-through text-sm">
+                    ${product.originalPrice}
+                  </span>
+                  <span className="text-gray-900 font-bold">
+                    ${product.salePrice}
+                  </span>
+                </div>
+                <div className="flex text-orange-400">
+                  {[...Array(product.rating)].map((_, i) => (
+                    <Star key={i} size={14} fill="currentColor" />
+                  ))}
+                </div>
+              </div>
+
+              {/* Add to Cart - Visible on Hover */}
+              <button className="text-[11px] font-bold uppercase tracking-widest text-gray-400 hover:text-pink-500 mt-2 block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+         {selectedProducts.length > 0 && (
+              <div id='contact'>
+              <Contact
+                selectedProducts={selectedProducts} 
+                onRemove={handleRemove} 
+                onUpdateQty={handleUpdateQty} 
+                />
+                </div>
+            )}
+    </section>
+  );
+}

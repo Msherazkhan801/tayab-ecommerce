@@ -1,36 +1,9 @@
-import { Star, Heart, Repeat, Search } from "lucide-react";
+import { popularProducts } from "@/utils/data";
+import { Star, Heart, Repeat, Search, ShoppingBag } from "lucide-react";
 
-const popularProducts = [
-  {
-    id: 1,
-    name: "Tbmpoy Men's Tapered",
-    originalPrice: 321,
-    salePrice: 250,
-    image: "https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg", 
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "Sunnyme Women's Ponchos",
-    originalPrice: 321,
-    salePrice: 250,
-    image: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg",
-    onSale: true,
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "Open Front Knit Sweaters",
-    originalPrice: 210,
-    salePrice: 200,
-    image: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg",
-    rating: 5,
-  },
-];
-
-export default function PopularProducts() {
+export default function PopularProducts({onProductClick}) {
   return (
-    <section className="py-16 px-4 max-w-7xl mx-auto">
+    <section className="py-8 px-4 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-12">
         <span className="text-pink-500 font-medium text-sm mb-2 block">
@@ -44,7 +17,10 @@ export default function PopularProducts() {
       {/* Product Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {popularProducts.map((product) => (
-          <div key={product.id} className="group">
+          <div key={product.id} className="group"
+          
+            onClick={() => onProductClick(product)}
+          >
             {/* Image Container */}
             <div className="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
               <img
@@ -66,11 +42,9 @@ export default function PopularProducts() {
                   <Heart size={18} />
                 </button>
                 <button className="bg-white p-2.5 rounded-full shadow-md hover:bg-pink-500 hover:text-white transition-colors">
-                  <Repeat size={18} />
+                  <ShoppingBag size={18} />
                 </button>
-                <button className="bg-white p-2.5 rounded-full shadow-md hover:bg-pink-500 hover:text-white transition-colors">
-                  <Search size={18} />
-                </button>
+              
               </div>
             </div>
 

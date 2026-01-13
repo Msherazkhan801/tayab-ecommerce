@@ -1,57 +1,10 @@
-import { Star } from "lucide-react";
+import { products } from "@/utils/data";
+import { Star, ShoppingCart } from "lucide-react";
 
-const products = [
-  {
-    id: 1,
-    name: "Long Sleeve Leopard T-Shirt",
-    originalPrice: 321,
-    salePrice: 250,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img1.jpg", // Replace with actual image
-    onSale: false,
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "Causal V-Neck Soft Raglan",
-    originalPrice: 210,
-    salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img2.jpg",
-    onSale: true,
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "Hanes Men's Pullover",
-    originalPrice: 210,
-    salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img3.jpg",
-    onSale: false,
-    rating: 5,
-  },
-  {
-    id: 4,
-    name: "Hanes Men's Pullover",
-    originalPrice: 210,
-    salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img6.jpg",
-    onSale: false,
-    rating: 5,
-  },
- 
-  {
-    id: 5,
-    name: "Hanes Men's Pullover",
-    originalPrice: 210,
-    salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
-    onSale: false,
-    rating: 5,
-  },
-];
-
-export default function ProductGrid() {
+// Add onSelect to the component props
+export default function ProductGrid({ onProductClick }) {
   return (
-    <section className="py-16 px-4 max-w-7xl mx-auto">
+    <section className="py-8 px-4 max-w-7xl mx-auto">
       {/* Section Header */}
       <div className="text-center mb-12">
         <span className="text-pink-500 font-medium text-sm mb-2 block">
@@ -63,9 +16,13 @@ export default function ProductGrid() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {products.map((product) => (
-          <div key={product.id} className="group cursor-pointer">
+          <div 
+            key={product.id} 
+            className="group cursor-pointer"
+            onClick={() => onProductClick(product)} // Trigger the selection
+          >
             {/* Image Container */}
             <div className="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
               <img
@@ -76,10 +33,18 @@ export default function ProductGrid() {
               
               {/* Sale Badge */}
               {product.onSale && (
-                <div className="absolute top-4 left-4 bg-red-600 text-white text-[11px] font-bold w-12 h-12 flex items-center justify-center rounded-full uppercase tracking-tighter">
+                <div className="absolute top-4 left-4 bg-red-600 text-white text-[11px] font-bold w-12 h-12 flex items-center justify-center rounded-full uppercase tracking-tighter z-10">
                   Sale!
                 </div>
               )}
+
+              {/* Hover Overlay Button */}
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+                <button className="bg-white text-black w-full py-2 flex items-center justify-center gap-2 font-bold text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                  <ShoppingCart size={16} />
+                  ORDER NOW
+                </button>
+              </div>
             </div>
 
             {/* Product Info */}
