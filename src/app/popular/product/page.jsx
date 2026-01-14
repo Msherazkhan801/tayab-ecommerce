@@ -1,51 +1,26 @@
-"use client"
-import Contact from "@/app/contact/page";
-import { popularProducts } from "@/utils/data";
-import { Star, Heart,  ShoppingBag } from "lucide-react";
-import { useState } from "react";
+"use client";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from '@/features/cart/cartSlice';
+import { popularProducts } from '@/utils/data';
+import { Heart, ShoppingBag, Star } from 'lucide-react';
 
 export default function PopularProductsPage() {
-    const [selectedProducts, setSelectedProducts] = useState([]);
-  
-    // Logic to add a product to the list
-    const handleProductClick = (product) => {
-      const exists = selectedProducts.find((p) => p.id === product.id);
-      if (!exists) {
-        setSelectedProducts([...selectedProducts, { ...product, quantity: 1 }]);
-      }
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  
-    };
-  
-    // Logic to remove a product
-    const handleRemove = (id) => {
-      setSelectedProducts(selectedProducts.filter((p) => p.id !== id));
-    };
-  
-    // Logic to update quantity
-    const handleUpdateQty = (id, newQty) => {
-      setSelectedProducts(selectedProducts.map(p => 
-        p.id === id ? { ...p, quantity: Math.max(1, newQty) } : p
-      ));
-    };
+   const dispatch = useDispatch();
+ 
+   const handleProductClick = (product) => {
+     dispatch(addToCart(product));
+ 
+   };
+ 
   return (
     <section className="py-8 px-4 max-w-7xl mx-auto">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <span className="text-pink-500 font-medium text-sm mb-2 block">
-          See Our Collection
-        </span>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-          Popular Products
-        </h2>
-      </div>
-
-      {/* Product Grid */}
+      <h2 className="text-4xl font-bold text-center mb-12">Popular Products</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {popularProducts.map((product) => (
           <div key={product.id} className="group"
           
-       onClick={() => handleProductClick(product)}
+            onClick={() => handleProductClick(product)}
           >
             {/* Image Container */}
             <div className="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
@@ -105,15 +80,6 @@ export default function PopularProductsPage() {
           </div>
         ))}
       </div>
-         {selectedProducts.length > 0 && (
-              <div id='contact'>
-              <Contact
-                selectedProducts={selectedProducts} 
-                onRemove={handleRemove} 
-                onUpdateQty={handleUpdateQty} 
-                />
-                </div>
-            )}
     </section>
   );
 }

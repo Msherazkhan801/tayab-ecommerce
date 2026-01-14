@@ -1,34 +1,47 @@
 "use client";
+import { removeFromCart, 
+  updateQuantity, 
+  selectCartItems, 
+  selectCartTotal, 
+  clearCart} from "@/features/cart/cartSlice";
 import { useForm, ValidationError } from "@formspree/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { FaWhatsapp, FaMapMarkerAlt, FaMinus, FaPlus, FaTrash } from "react-icons/fa";
 
-// Note: selectedProducts should now be an array. 
-// Added onRemove and onUpdateQty props to manage the list.
-export default function Contact({ selectedProducts = [], onRemove, onUpdateQty }) {
+// 1. Import Redux Hooks and Actions
+import { useSelector, useDispatch } from "react-redux";
+
+export default function Contact() {
+  // 2. Initialize Redux
+  const dispatch = useDispatch();
+  const selectedProducts = useSelector(selectCartItems);
+  const grandTotal = useSelector(selectCartTotal);
+
   const [state, handleSubmit] = useForm("xwvvkydg");
   const pathname = usePathname();
 
-  // Handle Page Reload on Success (Home Page only)
+  // Handle Success & Clear Cart
   useEffect(() => {
-    if (state.succeeded && pathname === '/') {
-      const timer = setTimeout(() => {
-        window.location.reload();
-        window.scrollTo(0, 0);
-      }, 3000);
-      return () => clearTimeout(timer);
+    if (state.succeeded) {
+      // Best Practice: Clear the cart in Redux once order is sent
+      dispatch(clearCart());
+
+      if (pathname === '/') {
+        const timer = setTimeout(() => {
+          window.location.reload();
+          window.scrollTo(0, 0);
+        }, 3000);
+        return () => clearTimeout(timer);
+      }
     }
-  }, [state.succeeded, pathname]);
+  }, [state.succeeded, pathname, dispatch]);
 
   const whatsappNumber = "923441768784";
   
-  // Calculate Grand Total for all items
-  const grandTotal = selectedProducts.reduce((sum, item) => sum + (item.salePrice * item.quantity), 0);
-
   const handleWhatsAppChat = () => {
-    let message = "Hello Shezi Cloth House! I have an inquiry.";
+    let message = "Hello behraaz Cloth House! I have an inquiry.";
     if (selectedProducts.length > 0) {
       const details = selectedProducts.map(p => `*${p.name}* (Qty: ${p.quantity})`).join("\n");
       message = `Hello! I am interested in:\n${details}\n*Total:* $${grandTotal}\nCan you provide more details?`;
@@ -41,18 +54,14 @@ export default function Contact({ selectedProducts = [], onRemove, onUpdateQty }
     return (
       <section className="flex flex-col items-center justify-center text-center py-24 px-6">
         <h3 className="text-pink-600 font-semibold text-2xl mb-4">
-          ✅ Thank you for contacting Shezi Cloth House!
+          ✅ Thank you for contacting behraaz Cloth House!
         </h3>
-        {pathname !== '/' && (
-          <>
-            <p className="text-gray-700 mb-6">We will get back to you shortly.</p>
-            <Link href="/">
-              <button className="border border-black rounded-lg px-6 py-3 font-medium hover:bg-black hover:text-white transition">
-                Back to Home
-              </button>
-            </Link>
-          </>
-        )}
+        <p className="text-gray-700 mb-6">Your order has been received. We will get back to you shortly.</p>
+        <Link href="/">
+          <button className="border border-black rounded-lg px-6 py-3 font-medium hover:bg-black hover:text-white transition">
+            Back to Home
+          </button>
+        </Link>
       </section>
     );
   }
@@ -62,13 +71,13 @@ export default function Contact({ selectedProducts = [], onRemove, onUpdateQty }
       <div className="container mx-auto px-4 mt-8">
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Contact **Shezi Cloth House** via the form below or message us directly on WhatsApp.
+          <p className="text-black max-w-2xl mx-auto">
+            Contact <b>behraaz Cloth House</b> via the form below or message us directly on WhatsApp.
           </p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Column 1: Contact Details */}
+          {/* Column 1: Info */}
           <div className="lg:col-span-1 space-y-6">
             <div className="bg-green-50 border border-green-200 p-6 rounded-2xl shadow-sm">
               <div className="flex items-center gap-4 mb-4">
@@ -79,12 +88,6 @@ export default function Contact({ selectedProducts = [], onRemove, onUpdateQty }
                 Chat on WhatsApp
               </button>
             </div>
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-              <div className="flex items-center gap-3 mb-3 text-pink-600">
-                <FaMapMarkerAlt /><span className="font-bold text-gray-900">Our Shop</span>
-              </div>
-              <p className="text-gray-600 text-sm">Shezi Cloth House, [Your Address]</p>
-            </div>
           </div>
 
           {/* Column 2: Form */}
@@ -92,10 +95,9 @@ export default function Contact({ selectedProducts = [], onRemove, onUpdateQty }
             <article className="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
               <form onSubmit={handleSubmit} className="space-y-5">
                 
-                {/* Multiple Products List */}
                 {selectedProducts.length > 0 && (
                   <div className="space-y-4 mb-6">
-                    <label className="block text-gray-700 font-bold mb-2">Selected Items:</label>
+                    <label className="block text-black font-bold mb-2">Selected Items:</label>
                     {selectedProducts.map((product) => (
                       <div key={product.id} className="bg-pink-50 p-4 rounded-xl border border-pink-100 flex flex-wrap justify-between items-center gap-4">
                         <div className="flex items-center gap-4">
@@ -108,11 +110,28 @@ export default function Contact({ selectedProducts = [], onRemove, onUpdateQty }
 
                         <div className="flex items-center gap-4">
                           <div className="flex items-center bg-white border border-pink-200 rounded-lg overflow-hidden">
-                            <button type="button" onClick={() => onUpdateQty(product.id, product.quantity - 1)} className="p-2 hover:bg-pink-50 text-pink-600"><FaMinus size={10}/></button>
+                            {/* 3. Dispatch Actions Directly */}
+                            <button 
+                              type="button" 
+                              onClick={() => dispatch(updateQuantity({ id: product.id, quantity: product.quantity - 1 }))} 
+                              className="p-2 hover:bg-pink-50 text-pink-600"
+                            >
+                              <FaMinus size={10}/>
+                            </button>
                             <span className="w-8 text-center font-bold text-sm">{product.quantity}</span>
-                            <button type="button" onClick={() => onUpdateQty(product.id, product.quantity + 1)} className="p-2 hover:bg-pink-50 text-pink-600"><FaPlus size={10}/></button>
+                            <button 
+                              type="button" 
+                              onClick={() => dispatch(updateQuantity({ id: product.id, quantity: product.quantity + 1 }))} 
+                              className="p-2 hover:bg-pink-50 text-pink-600"
+                            >
+                              <FaPlus size={10}/>
+                            </button>
                           </div>
-                          <button type="button" onClick={() => onRemove(product.id)} className="text-red-500 hover:text-red-700 transition">
+                          <button 
+                            type="button" 
+                            onClick={() => dispatch(removeFromCart(product.id))} 
+                            className="text-red-500 hover:text-red-700 transition"
+                          >
                             <FaTrash size={16} />
                           </button>
                         </div>
@@ -124,12 +143,7 @@ export default function Contact({ selectedProducts = [], onRemove, onUpdateQty }
                       <span className="text-xl font-bold">${grandTotal}</span>
                     </div>
 
-                    {/* Hidden input for Formspree to see all items */}
-                    <input 
-                      type="hidden" 
-                      name="order_details" 
-                      value={selectedProducts.map(p => `${p.name} (Qty: ${p.quantity}, Price: $${p.salePrice * p.quantity})`).join(" | ")} 
-                    />
+                    <input type="hidden" name="order_details" value={selectedProducts.map(p => `${p.name} (Qty: ${p.quantity})`).join(" | ")} />
                     <input type="hidden" name="grand_total" value={`$${grandTotal}`} />
                   </div>
                 )}
@@ -140,7 +154,7 @@ export default function Contact({ selectedProducts = [], onRemove, onUpdateQty }
                 </div>
                 <textarea name="message" rows="4" placeholder="Any specific requirements?" className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-pink-500" required></textarea>
 
-                <button type="submit" disabled={state.submitting} className="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-gray-800 transition disabled:bg-gray-400">
+                <button type="submit" disabled={state.submitting || selectedProducts.length === 0} className="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-gray-800 transition disabled:bg-gray-400">
                   {state.submitting ? "Sending Order..." : "Confirm Order"}
                 </button>
               </form>
