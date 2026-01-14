@@ -10,7 +10,7 @@ export default function Footer() {
         {/* About The Store */}
         <div className="space-y-6">
           <h3 className="text-xl font-bold border-b-2 border-white/10 pb-4 inline-block w-full">
-            Shezi Cloth House
+            behraaz Cloth House
           </h3>
           <p className="text-gray-400 text-sm leading-relaxed">
             Founded over 9 years ago, we provide premium fabrics and elegant designs that blend traditional craftsmanship with modern trends.
@@ -95,7 +95,7 @@ export default function Footer() {
       
       {/* Copyright area */}
       <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/10 text-center text-xs text-gray-500">
-        <p>© {new Date().getFullYear()} Shezi Cloth House. All Rights Reserved.</p>
+        <p>© {new Date().getFullYear()} behraaz Cloth House. All Rights Reserved.</p>
       </div>
     </footer>
   );
