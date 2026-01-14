@@ -17,7 +17,7 @@ export default function ProductGrid({ onProductClick }) {
 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {products.map((product) => (
+        {products.slice(0,8).map((product) => (
           <div 
             key={product.id} 
             className="group cursor-pointer"

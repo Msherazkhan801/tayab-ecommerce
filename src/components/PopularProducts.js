@@ -16,7 +16,7 @@ export default function PopularProducts({onProductClick}) {
 
       {/* Product Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {popularProducts.map((product) => (
+        {popularProducts.slice(0,3).map((product) => (
           <div key={product.id} className="group"
           
             onClick={() => onProductClick(product)}

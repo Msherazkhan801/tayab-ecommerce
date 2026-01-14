@@ -25,6 +25,14 @@ export const popularProducts = [
     image: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg",
     rating: 5,
   },
+  {
+    id: 4,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+    image: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg",
+    rating: 5,
+  },
 ];
 
 
@@ -68,6 +76,33 @@ export const products = [
  
   {
     id: 5,
+    name: "Hanes Men's Pullover",
+    originalPrice: 210,
+    salePrice: 200,
+    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
+    onSale: false,
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: "Hanes Men's Pullover",
+    originalPrice: 210,
+    salePrice: 200,
+    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
+    onSale: false,
+    rating: 5,
+  },
+  {
+    id: 7,
+    name: "Hanes Men's Pullover",
+    originalPrice: 210,
+    salePrice: 200,
+    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
+    onSale: false,
+    rating: 5,
+  },
+  {
+    id: 8,
     name: "Hanes Men's Pullover",
     originalPrice: 210,
     salePrice: 200,

@@ -79,13 +79,6 @@ export default function ShopPage() {
           </div>
         ))}
       </div>
-
-      {/* 5. Cleaned up Contact section: No more props needed! */}
-      {cartItems.length > 0 && (
-        <div id='contact' className="mt-16">
-          <Contact />
-        </div>
-      )}
     </section>
   );
 }
