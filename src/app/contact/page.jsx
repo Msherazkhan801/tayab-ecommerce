@@ -1,4 +1,5 @@
 "use client";
+import AddressCard from "@/components/Card";
 import { removeFromCart, 
   updateQuantity, 
   selectCartItems, 
@@ -87,6 +88,9 @@ export default function Contact() {
               <button onClick={handleWhatsAppChat} className="w-full bg-green-500 text-white font-bold py-3 rounded-lg hover:bg-green-600 transition flex items-center justify-center gap-2">
                 Chat on WhatsApp
               </button>
+            </div>
+            <div>
+              <AddressCard/>
             </div>
           </div>
 
