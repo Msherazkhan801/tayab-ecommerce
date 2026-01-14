@@ -30,7 +30,7 @@ export const popularProducts = [
     name: "Open Front Knit Sweaters",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg",
+    image: "/img2.jpg",
     rating: 5,
   },
 ];
