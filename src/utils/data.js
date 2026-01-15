@@ -1,11 +1,11 @@
 
-export const popularProducts = [
+export const womenProducts = [
   {
     id: 1,
     name: "Tbmpoy Men's Tapered",
     originalPrice: 321,
     salePrice: 250,
-    image: "https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg", 
+    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img2.jpg", 
     rating: 5,
   },
   {
@@ -22,7 +22,7 @@ export const popularProducts = [
     name: "Open Front Knit Sweaters",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg",
+    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img6.jpg",
     rating: 5,
   },
   {
@@ -30,19 +30,19 @@ export const popularProducts = [
     name: "Open Front Knit Sweaters",
     originalPrice: 210,
     salePrice: 200,
-    image: "/img2.jpg",
+    image: "/image.png",
     rating: 5,
   },
 ];
 
 
-export const products = [
+export const menProducts = [
   {
     id: 1,
     name: "Long Sleeve Leopard T-Shirt",
     originalPrice: 321,
     salePrice: 250,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img1.jpg", // Replace with actual image
+    image: "/image12.jpg", // Replace with actual image
     onSale: false,
     rating: 5,
   },
@@ -51,7 +51,7 @@ export const products = [
     name: "Causal V-Neck Soft Raglan",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img2.jpg",
+    image: "https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg", 
     onSale: true,
     rating: 5,
   },
@@ -69,7 +69,8 @@ export const products = [
     name: "Hanes Men's Pullover",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img6.jpg",
+    image: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg",
+
     onSale: false,
     rating: 5,
   },
@@ -101,15 +102,7 @@ export const products = [
     onSale: false,
     rating: 5,
   },
-  {
-    id: 8,
-    name: "Hanes Men's Pullover",
-    originalPrice: 210,
-    salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
-    onSale: false,
-    rating: 5,
-  },
+ 
 ];
 
 export const cards = [
@@ -149,4 +142,25 @@ export const cards = [
     title: "Winter Spring!",
     bgColor: "bg-[#d9a066]", // Earthy Orange
   },
+];
+
+export const slides = [
+  {
+    image: "https://templates.hibootstrap.com/xton/default/assets/img/main-banner1.jpg", // Replace with your actual image path
+    subtitle: "Limited Time Offer!",
+    title: "Winter-Spring!",
+    description: "Take 20% Off 'Sale Must-Haves'",
+  },
+  {
+    image: "https://templates.hibootstrap.com/xton/default/assets/img/main-banner2.jpg",
+    subtitle: "New Arrivals",
+    title: "Modern Elegance",
+    description: "Discover the latest trends for the season",
+  },
+  {
+    image: "https://templates.hibootstrap.com/xton/default/assets/img/main-banner3.jpg",
+    subtitle: "New Arrivals",
+    title: "Modern Elegance",
+    description: "Discover the latest trends for the season",
+  }
 ];

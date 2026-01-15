@@ -4,27 +4,9 @@ import React, { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import { slides } from '@/utils/data';
 
-const slides = [
-  {
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/main-banner1.jpg", // Replace with your actual image path
-    subtitle: "Limited Time Offer!",
-    title: "Winter-Spring!",
-    description: "Take 20% Off 'Sale Must-Haves'",
-  },
-  {
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/main-banner2.jpg",
-    subtitle: "New Arrivals",
-    title: "Modern Elegance",
-    description: "Discover the latest trends for the season",
-  },
-  {
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/main-banner3.jpg",
-    subtitle: "New Arrivals",
-    title: "Modern Elegance",
-    description: "Discover the latest trends for the season",
-  }
-];
+
 
 export default function HeroSlider() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });

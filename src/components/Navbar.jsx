@@ -32,8 +32,8 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Shop", href: "/shop" },
-    { name: "Popular", href: "/popular/product" },
+    { name: "Men", href: "/men" },
+    { name: "Women", href: "/popular/women" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -111,28 +111,81 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Dropdown */}
-        <div
-          className={`lg:hidden bg-white border-t border-gray-100 transition-all duration-300 overflow-hidden ${
-            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
+       {/* Mobile Menu Sidebar Overlay */}
+<div
+  className={`fixed inset-0 z-50 lg:hidden transition-all duration-300 ${
+    isOpen ? "visible" : "invisible"
+  }`}
+>
+  {/* Dark Backdrop */}
+  <div 
+    className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
+      isOpen ? "opacity-100" : "opacity-0"
+    }`}
+    onClick={() => setIsOpen(false)}
+  />
+
+  {/* Sidebar Content */}
+  <div
+    className={`absolute top-0 left-0 h-full w-72 bg-white shadow-2xl transition-transform duration-300 ease-in-out ${
+      isOpen ? "translate-x-0" : "-translate-x-full"
+    }`}
+  >
+    <div className="flex flex-col h-full">
+      {/* --- Sidebar Header (Logo & Close) --- */}
+      <div className="flex items-center justify-between p-5 border-b border-gray-100">
+        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
+          {/* Replace with your <img> tag or SVG logo */}
+           <div className="bg-black p-1.5 rounded-md">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 8V7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7V8H20C21.1046 8 22 8.89543 22 10V20C22 21.1046 21.1046 22 20 22H4C2.89543 22 2 21.1046 2 20V10C2 8.89543 2.89543 8 4 8H6ZM8 8H16V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V8ZM12 15C13.6569 15 15 13.6569 15 12H13C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12H9C9 13.6569 10.3431 15 12 15Z"
+                    fill="pink"
+                  />
+                </svg>
+              </div>
+          <span className="text-2xl font-bold text-pink-500">behraaz</span>
+        </Link>
+        
+   
+
+        <button 
+          onClick={() => setIsOpen(false)}
+          className="p-2 text-gray-500 hover:text-pink-500 transition-colors"
         >
-          <div className="flex flex-col p-4 space-y-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`text-lg font-semibold transition-colors ${
-                  pathname === link.href
-                    ? "text-pink-500"
-                    : "text-gray-900 hover:text-pink-500"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        </div>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      {/* --- Navigation Links --- */}
+      <nav className="flex flex-col p-6 space-y-5">
+        {navLinks.map((link) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            onClick={() => setIsOpen(false)}
+            className={`text-lg font-semibold  transition-colors ${
+              pathname === link.href
+                ? "text-pink-500"
+                : "text-gray-900 hover:text-pink-500"
+            }`}
+          >
+            {link.name}
+            <hr/>
+          </Link>
+        ))}
+      </nav>
+    </div>
+  </div>
+</div>
       </nav>
 
    

@@ -1,4 +1,4 @@
-import { popularProducts } from "@/utils/data";
+import { womenProducts } from "@/utils/data";
 import { Star, Heart, Repeat, Search, ShoppingBag } from "lucide-react";
 
 export default function PopularProducts({onProductClick}) {
@@ -16,7 +16,7 @@ export default function PopularProducts({onProductClick}) {
 
       {/* Product Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {popularProducts.slice(0,3).map((product) => (
+        {womenProducts.slice(0,3).map((product) => (
           <div key={product.id} className="group"
           
             onClick={() => onProductClick(product)}
