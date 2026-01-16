@@ -1,21 +1,34 @@
 "use client";
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { slides } from '@/utils/data';
 
-
-
 export default function HeroSlider() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  // Update dots when slide changes
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, onSelect]);
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
 
   return (
-    <section className="relative h-[85vh] w-full bg-[#f4f4f6] overflow-hidden group">
+    <section className="relative h-[85vh] w-full bg-black-900 overflow-hidden group">
       {/* Slider Container */}
       <div className="overflow-hidden h-full" ref={emblaRef}>
         <div className="flex h-full">
@@ -23,28 +36,37 @@ export default function HeroSlider() {
             <div key={index} className="relative flex-[0_0_100%] min-w-0 h-full flex items-center justify-center">
               {/* Background Image */}
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
                 style={{ backgroundImage: `url(${slide.image})` }}
               />
               
+              {/* Black Shadow Overlay (Gradient) */}
+              <div className="absolute inset-0 bg-black/40 bg-gradient-to-t from-black/70 via-black/20 to-black/40" />
+              
               {/* Content Overlay */}
-              <div className="relative z-10 text-center px-4 max-w-2xl">
-                <p className="text-gray-900 font-medium tracking-wide mb-2 uppercase text-sm">
+              <div className="relative z-10 text-center px-4 max-w-3xl">
+                <p className="text-white/90 font-medium tracking-[0.2em] mb-3 uppercase text-xs md:text-sm drop-shadow-md">
                   {slide.subtitle}
                 </p>
-                <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-4 tracking-tight">
+                <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-2xl">
                   {slide.title}
                 </h1>
-                <p className="text-gray-700 text-lg mb-8">
+                <p className="text-gray-100 text-lg mb-10 max-w-xl mx-auto drop-shadow-md">
                   {slide.description}
                 </p>
                 
                 {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/womens" className="bg-[#ff4d8d] text-white px-8 py-3.5 font-bold uppercase text-xs tracking-widest hover:bg-black transition-colors duration-300">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Link 
+                    href="/womens" 
+                    className="w-full sm:w-auto bg-[#ff4d8d] text-white px-10 py-4 font-bold uppercase text-[10px] tracking-widest hover:bg-white hover:text-black transition-all duration-300"
+                  >
                     Shop Women's
                   </Link>
-                  <Link href="/mens" className="border-2 border-gray-900 text-gray-900 px-8 py-3.5 font-bold uppercase text-xs tracking-widest hover:bg-black hover:text-white hover:border-black transition-all duration-300">
+                  <Link 
+                    href="/mens" 
+                    className="w-full sm:w-auto border-2 border-white text-white px-10 py-4 font-bold uppercase text-[10px] tracking-widest hover:bg-white hover:text-black transition-all duration-300"
+                  >
                     Shop Men's
                   </Link>
                 </div>
@@ -57,22 +79,33 @@ export default function HeroSlider() {
       {/* Navigation Arrows */}
       <button 
         onClick={scrollPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors opacity-0 group-hover:opacity-100 hidden md:block"
+        className="absolute left-6 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-white transition-all opacity-0 group-hover:opacity-100 hidden md:block z-20"
+        aria-label="Previous slide"
       >
-        <ChevronLeft size={48} strokeWidth={1} />
+        <ChevronLeft size={56} strokeWidth={1} />
       </button>
       <button 
         onClick={scrollNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-black transition-colors opacity-0 group-hover:opacity-100 hidden md:block"
+        className="absolute right-6 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-white transition-all opacity-0 group-hover:opacity-100 hidden md:block z-20"
+        aria-label="Next slide"
       >
-        <ChevronRight size={48} strokeWidth={1} />
+        <ChevronRight size={56} strokeWidth={1} />
       </button>
 
-      {/* Pagination Dots (bottom center) */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-         <div className="w-2.5 h-2.5 rounded-full border border-black bg-black"></div>
-         <div className="w-2.5 h-2.5 rounded-full border border-gray-400"></div>
-         <div className="w-2.5 h-2.5 rounded-full border border-gray-400"></div>
+      {/* Pagination Dots */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => scrollTo(index)}
+            className={`transition-all duration-300 rounded-full border border-white ${
+              index === selectedIndex 
+                ? "w-8 h-2.5 bg-white" 
+                : "w-2.5 h-2.5 bg-transparent hover:bg-white/50"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );

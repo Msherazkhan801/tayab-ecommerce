@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function AboutPage() {
   return (
-    <main className="max-w-6xl mx-auto px-6 py-20 font-sans text-gray-800">
+    <main className="max-w-6xl mx-auto px-6 py-20 font-sans bg-white text-black-800">
       {/* Hero Section with Image on Right */}
       <section className="flex flex-col md:flex-row items-center gap-12 mb-16">
         
@@ -12,7 +12,7 @@ export default function AboutPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-black">
             About behraaz Cloth House
           </h1>
-          <div className="w-20 h-1 bg-black mb-8"></div>
+          <div className="w-20 h-1  mb-8"></div>
           
           <p className="text-lg leading-relaxed mb-6 text-black">
             Founded over <strong>9 years ago</strong>, behraaz Cloth House has established 

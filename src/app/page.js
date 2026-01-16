@@ -24,22 +24,25 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white">
-      <section id="home"><HeroSlider /></section>
-      
+      <section id="home">
+        <HeroSlider />
+      </section>
+
       {/* Pass the simple dispatch handler to your grids */}
-      <section id="shop" className="mt-4"><PromoCards /></section>
-      
+      <section id="shop" className="mt-4">
+        <PromoCards />
+      </section>
+
       <div className="max-w-7xl mx-auto py-8 px-4 space-y-20">
-        <section id="recent">
-          <ProductGrid onProductClick={handleSelectProduct} />
-        </section>
-
-        <DiscountBanner />
-
         <section id="popular">
           <PopularProducts onProductClick={handleSelectProduct} />
         </section>
 
+        {/* <DiscountBanner /> */}
+
+        <section id="recent">
+          <ProductGrid onProductClick={handleSelectProduct} />
+        </section>
         <Features />
 
         <section id="contact">

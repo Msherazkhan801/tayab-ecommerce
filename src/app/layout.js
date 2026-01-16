@@ -28,8 +28,8 @@ export default function RootLayout({ children }) {
         <ReduxProvider>
       <Navbar />
         {children}
-        <Footer/>
         </ReduxProvider>
+        <Footer/>
       </body>
     </html>
   );

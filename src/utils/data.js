@@ -1,11 +1,10 @@
-
 export const womenProducts = [
   {
     id: 1,
     name: "Tbmpoy Men's Tapered",
     originalPrice: 321,
     salePrice: 250,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img2.jpg", 
+    image: "/image1.jpeg",
     rating: 5,
   },
   {
@@ -13,7 +12,7 @@ export const womenProducts = [
     name: "Sunnyme Women's Ponchos",
     originalPrice: 321,
     salePrice: 250,
-    image: "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg",
+  image: "/image2.jpeg",
     onSale: true,
     rating: 5,
   },
@@ -22,7 +21,7 @@ export const womenProducts = [
     name: "Open Front Knit Sweaters",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img6.jpg",
+  image: "/image3.jpeg",
     rating: 5,
   },
   {
@@ -30,11 +29,115 @@ export const womenProducts = [
     name: "Open Front Knit Sweaters",
     originalPrice: 210,
     salePrice: 200,
-    image: "/image.png",
+  image: "/image4.jpeg",
     rating: 5,
   },
-];
+  {
+    id: 5,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image5.jpeg",
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image6.jpeg",
+    rating: 5,
+  },
+  {
+    id: 7,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image7.jpeg",
+    rating: 5,
+  },
+  {
+    id: 8,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image8.jpeg",
+    rating: 5,
+  },
+  {
+    id: 9,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image9.jpeg",
+    rating: 5,
+  },
+  {
+    id: 10,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image10.jpeg",
+    rating: 5,
+  },
+  {
+    id: 11,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image11.jpeg",
+    rating: 5,
+  },
+  {
+    id: 12,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image12.jpeg",
+    rating: 5,
+  },
+  {
+    id: 13,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image13.jpeg",
+    rating: 5,
+  },
+  {
+    id: 14,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image14.jpeg",
+    rating: 5,
+  },
+  {
+    id: 15,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image15.jpeg",
+    rating: 5,
+  },
+  {
+    id: 16,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image16.jpeg",
+    rating: 5,
+  },
+  {
+    id: 17,
+    name: "Open Front Knit Sweaters",
+    originalPrice: 210,
+    salePrice: 200,
+  image: "/image19.jpeg",
+    rating: 5,
+  },
 
+];
 
 export const menProducts = [
   {
@@ -51,7 +154,7 @@ export const menProducts = [
     name: "Causal V-Neck Soft Raglan",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg", 
+    image: "https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg",
     onSale: true,
     rating: 5,
   },
@@ -60,7 +163,8 @@ export const menProducts = [
     name: "Hanes Men's Pullover",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img3.jpg",
+    image:
+      "https://templates.hibootstrap.com/xton/default/assets/img/products/img3.jpg",
     onSale: false,
     rating: 5,
   },
@@ -74,13 +178,14 @@ export const menProducts = [
     onSale: false,
     rating: 5,
   },
- 
+
   {
     id: 5,
     name: "Hanes Men's Pullover",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
+    image:
+      "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
     onSale: false,
     rating: 5,
   },
@@ -89,7 +194,8 @@ export const menProducts = [
     name: "Hanes Men's Pullover",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
+    image:
+      "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
     onSale: false,
     rating: 5,
   },
@@ -98,11 +204,11 @@ export const menProducts = [
     name: "Hanes Men's Pullover",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
+    image:
+      "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
     onSale: false,
     rating: 5,
   },
- 
 ];
 
 export const cards = [
@@ -119,7 +225,8 @@ export const cards = [
     bgColor: "bg-[#e5e7eb]", // Light Gray
   },
   {
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/categories/img3.jpg",
+    image:
+      "https://templates.hibootstrap.com/xton/default/assets/img/categories/img3.jpg",
     subtitle: "Your Looks",
     title: "Must Haves",
     bgColor: "bg-[#93e2f5]", // Light Blue
@@ -131,7 +238,8 @@ export const cards = [
     bgColor: "bg-[#d9a066]", // Earthy Orange
   },
   {
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/categories/img3.jpg",
+    image:
+      "https://templates.hibootstrap.com/xton/default/assets/img/categories/img3.jpg",
     subtitle: "Your Looks",
     title: "Must Haves",
     bgColor: "bg-[#93e2f5]", // Light Blue
@@ -146,21 +254,21 @@ export const cards = [
 
 export const slides = [
   {
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/main-banner1.jpg", // Replace with your actual image path
+    image:"/slide1.jpeg", // Replace with your actual image path
     subtitle: "Limited Time Offer!",
     title: "Winter-Spring!",
     description: "Take 20% Off 'Sale Must-Haves'",
   },
   {
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/main-banner2.jpg",
+  image:"/slide2.jpeg", // Replace with your actual image path
     subtitle: "New Arrivals",
     title: "Modern Elegance",
     description: "Discover the latest trends for the season",
   },
   {
-    image: "https://templates.hibootstrap.com/xton/default/assets/img/main-banner3.jpg",
+ image:"/slide3.jpeg", // Replace with your actual image path
     subtitle: "New Arrivals",
     title: "Modern Elegance",
     description: "Discover the latest trends for the season",
-  }
+  },
 ];
