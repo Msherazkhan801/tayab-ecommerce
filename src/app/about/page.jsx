@@ -10,12 +10,12 @@ export default function AboutPage() {
         {/* Left Side: Text Content */}
         <div className="md:w-1/2">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-black">
-            About behraaz Cloth House
+            About Luqman Cloth House
           </h1>
           <div className="w-20 h-1  mb-8"></div>
           
           <p className="text-lg leading-relaxed mb-6 text-black">
-            Founded over <strong>9 years ago</strong>, behraaz Cloth House has established 
+            Founded over <strong>9 years ago</strong>, Luqman Cloth House has established 
             itself as a trusted name in the textile and fashion industry. Our journey 
             began with a simple mission: to provide our customers with premium fabrics 
             and elegant designs that blend traditional craftsmanship with modern trends.
@@ -33,7 +33,7 @@ export default function AboutPage() {
           <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
             <Image 
               src="/shop.jpg" // Put your image in the /public folder
-              alt="behraaz Cloth House Interior"
+              alt="Luqman Cloth House Interior"
               fill
               className="object-cover"
               priority

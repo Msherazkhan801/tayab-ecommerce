@@ -4,7 +4,7 @@ import { Star, ShoppingCart } from "lucide-react";
 // Add onSelect to the component props
 export default function ProductGrid({ onProductClick }) {
   return (
-    <section className="py-8 px-4 max-w-7xl mx-auto">
+    <section className="py-4 px-4 max-w-7xl mx-auto">
       {/* Section Header */}
       <div className="text-center mb-12">
         <span className="text-pink-500 font-medium text-sm mb-2 block">
@@ -49,7 +49,7 @@ export default function ProductGrid({ onProductClick }) {
 
             {/* Product Info */}
             <div className="space-y-1">
-              <h3 className="font-bold text-gray-900 text-lg hover:text-pink-500 transition-colors">
+              <h3 className="font-bold text-black text-lg hover:text-pink-500 transition-colors">
                 {product.name}
               </h3>
               

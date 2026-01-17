@@ -20,7 +20,7 @@ export default function Contact() {
   const selectedProducts = useSelector(selectCartItems);
   const grandTotal = useSelector(selectCartTotal);
 
-  const [state, handleSubmit] = useForm("xwvvkydg");
+  const [state, handleSubmit] = useForm("xreeevlw");
   const pathname = usePathname();
 
   // Handle Success & Clear Cart
@@ -39,10 +39,10 @@ export default function Contact() {
     }
   }, [state.succeeded, pathname, dispatch]);
 
-  const whatsappNumber = "923441768784";
+  const whatsappNumber = "+92 340 9797271";
   
   const handleWhatsAppChat = () => {
-    let message = "Hello behraaz Cloth House! I have an inquiry.";
+    let message = "Hello Luqman Cloth House! I have an inquiry.";
     if (selectedProducts.length > 0) {
       const details = selectedProducts.map(p => `*${p.name}* (Qty: ${p.quantity})`).join("\n");
       message = `Hello! I am interested in:\n${details}\n*Total:* $${grandTotal}\nCan you provide more details?`;
@@ -55,7 +55,7 @@ export default function Contact() {
     return (
       <section className="flex flex-col items-center justify-center text-center py-24 px-6">
         <h3 className="text-pink-600 font-semibold text-2xl mb-4">
-          ✅ Thank you for contacting behraaz Cloth House!
+          ✅ Thank you for contacting Luqman Cloth House!
         </h3>
         <p className="text-gray-700 mb-6">Your order has been received. We will get back to you shortly.</p>
         <Link href="/">
@@ -73,7 +73,7 @@ export default function Contact() {
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h1>
           <p className="text-black max-w-2xl mx-auto">
-            Contact <b>behraaz Cloth House</b> via the form below or message us directly on WhatsApp.
+            Contact <b>Luqman Cloth House</b> via the form below or message us directly on WhatsApp.
           </p>
         </header>
 
@@ -151,12 +151,13 @@ export default function Contact() {
                     <input type="hidden" name="grand_total" value={`$${grandTotal}`} />
                   </div>
                 )}
+                  { selectedProducts.length === 0 ?(<p className="text-red-500 text-lg font-bold" >Please Slecte the Items first !</p>):""}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input type="text" name="name" placeholder="Full Name" className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-pink-500" required />
                   <input type="tel" name="phone" placeholder="03XXXXXXXXX" className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-pink-500" required />
                 </div>
-                <textarea name="message" rows="4" placeholder="Any specific requirements?" className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-pink-500" required></textarea>
+                <textarea name="message" rows="4" placeholder="Any specific requirements?" className="w-full border border-gray-300 text-black rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-pink-500" required></textarea>
 
                 <button type="submit" disabled={state.submitting || selectedProducts.length === 0} className="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-gray-800 transition disabled:bg-gray-400">
                   {state.submitting ? "Sending Order..." : "Confirm Order"}

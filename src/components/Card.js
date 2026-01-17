@@ -17,9 +17,7 @@ export default function AddressCard() {
 
       {/* Address */}
       <p className="text-gray-700 leading-relaxed mb-4">
-        123 Main Street,<br />
-        Downtown Plaza,<br />
-        New York, NY 10001
+    Permoli Road, <br/> village Shewa (Swabi), Pakistan
       </p>
 
       {/* Info */}
@@ -33,7 +31,7 @@ export default function AddressCard() {
 
       {/* Action */}
       <a
-        href="https://maps.google.com"
+        href="https://maps.app.goo.gl/bY4VLB115LDu5zus9?g_st=aw"
         target="_blank"
         className="block mt-5 text-center bg-pink-500 text-white py-2.5 rounded-lg font-medium hover:bg-pink-600 transition"
       >

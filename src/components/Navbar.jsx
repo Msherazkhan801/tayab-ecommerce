@@ -7,8 +7,7 @@ import {
   FiShoppingBag,
   FiMenu,
   FiX,
-  FiChevronDown,
-  FiUser,
+
 } from "react-icons/fi";
 
 // 1. Import Redux Hook and Selector
@@ -60,7 +59,10 @@ const Navbar = () => {
                     fill="white"
                   />
                 </svg>
+
               </div>
+          <span className="text-2xl font-bold text-pink-500">Luqman <span className="text-black">Cloth House</span></span>
+
             </Link>
 
             {/* Desktop Navigation */}
@@ -150,10 +152,9 @@ const Navbar = () => {
                   />
                 </svg>
               </div>
-          <span className="text-2xl font-bold text-pink-500">behraaz</span>
+          <span className="text-2xl font-bold text-black">Luqman cloth House</span>
         </Link>
         
-   
 
         <button 
           onClick={() => setIsOpen(false)}

@@ -10,6 +10,7 @@
   "dependencies": {
     "@formspree/react": "^3.0.0",
     "@reduxjs/toolkit": "^2.11.2",
+    "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "firebase": "^12.7.0",
     "lucide-react": "^0.562.0",

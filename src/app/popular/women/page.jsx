@@ -52,9 +52,9 @@ export default function PopularProductsPage() {
             
             <button 
               onClick={closeModal}
-              className="absolute top-4 right-4 z-20 p-2 bg-white rounded-full shadow-lg hover:text-pink-500 transition-colors"
+              className="absolute top-4 right-4 z-20 p-2 bg-white rounded-full shadow-lg  text-pink-500 hover:transition-colors"
             >
-              <X size={24} />
+              <X size={24} color='black'/>
             </button>
 
             {/* Left: Image Display */}

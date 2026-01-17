@@ -54,7 +54,7 @@ export default function ShopPage() {
               <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 p-4">
                  <button 
                   onClick={(e) => { e.stopPropagation(); openModal(product); }}
-                  className="bg-white p-3 rounded-full hover:bg-pink-500 hover:text-white transition-all shadow-lg"
+                  className="bg-white text-black p-3 rounded-full hover:bg-pink-500 hover:text-white transition-all shadow-lg"
                  >
                    <Eye size={20} />
                  </button>
@@ -88,7 +88,7 @@ export default function ShopPage() {
           <div className="bg-white w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-3xl relative flex flex-col md:flex-row shadow-2xl">
             
             <button onClick={closeModal} className="absolute top-4 right-4 z-20 p-2 bg-white rounded-full shadow-lg hover:text-pink-500 transition-colors">
-              <X size={24} />
+              <X size={24} color='black'/>
             </button>
 
             {/* Modal Left: Images */}

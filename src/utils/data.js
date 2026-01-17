@@ -154,7 +154,7 @@ export const menProducts = [
     name: "Causal V-Neck Soft Raglan",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://images.pexels.com/photos/428333/pexels-photo-428333.jpeg",
+    image: "/men1.png",
     onSale: true,
     rating: 5,
   },
@@ -163,8 +163,7 @@ export const menProducts = [
     name: "Hanes Men's Pullover",
     originalPrice: 210,
     salePrice: 200,
-    image:
-      "https://templates.hibootstrap.com/xton/default/assets/img/products/img3.jpg",
+    image: "/men2.png",
     onSale: false,
     rating: 5,
   },
@@ -173,7 +172,7 @@ export const menProducts = [
     name: "Hanes Men's Pullover",
     originalPrice: 210,
     salePrice: 200,
-    image: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg",
+      image: "/men3.png",
 
     onSale: false,
     rating: 5,
@@ -184,8 +183,7 @@ export const menProducts = [
     name: "Hanes Men's Pullover",
     originalPrice: 210,
     salePrice: 200,
-    image:
-      "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
+    image: "/men4.png",
     onSale: false,
     rating: 5,
   },
@@ -194,21 +192,11 @@ export const menProducts = [
     name: "Hanes Men's Pullover",
     originalPrice: 210,
     salePrice: 200,
-    image:
-      "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
+    image: "/men5.png",
     onSale: false,
     rating: 5,
   },
-  {
-    id: 7,
-    name: "Hanes Men's Pullover",
-    originalPrice: 210,
-    salePrice: 200,
-    image:
-      "https://templates.hibootstrap.com/xton/default/assets/img/products/img4.jpg",
-    onSale: false,
-    rating: 5,
-  },
+ 
 ];
 
 export const cards = [

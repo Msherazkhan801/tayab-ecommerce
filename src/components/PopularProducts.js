@@ -3,7 +3,7 @@ import { Star, Heart, Repeat, Search, ShoppingBag } from "lucide-react";
 
 export default function PopularProducts({onProductClick}) {
   return (
-    <section className="py-8 px-4 max-w-7xl mx-auto">
+    <section className="py-2 px-4 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-12">
         <span className="text-pink-500 font-medium text-sm mb-2 block">
